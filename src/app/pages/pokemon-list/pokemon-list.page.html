@@ -1,0 +1,70 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buscar Pokémon</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    [(ngModel)]="pokemonName"
+    (ionInput)="searchPokemon()"
+    debounce="500"
+    placeholder="Busca el  Pokémon por nombre: "
+  ></ion-searchbar>
+
+  <ion-text color="danger" *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </ion-text>
+
+  <div *ngIf="loading" class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Buscando ...</p>
+  </div>
+
+  <div *ngIf="!loading && pokemon.name">
+    <ion-card *ngIf="pokemon.name">
+      <img [src]="pokemonImageUrl" alt="{{ pokemon.name }}" />
+      <ion-card-header>
+        <ion-card-title>{{ pokemon.name | titlecase }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>ID:</strong> {{ pokemon.id }}</p>
+
+        <p><strong>Types:</strong> 
+          <span *ngFor="let type of pokemon.types; let isLast = last">
+            {{ type.type.name | titlecase }} 
+            <span *ngIf="!isLast">, </span>
+          </span>
+        </p>
+        
+        <p><strong>Abilities:</strong>
+          <span *ngFor="let ability of pokemon.abilities; let isLast = last">
+            {{ ability.ability.name | titlecase }} 
+            <span *ngIf="!isLast">, </span>
+          </span>
+        </p>
+
+        <div *ngIf="pokemon.stats && pokemon.stats.length">
+          <p><strong>Stats:</strong></p>
+          <ul>
+            <li *ngFor="let stat of pokemon.stats">
+              <strong>{{ stat.stat.name | titlecase }}:</strong> {{ stat.base_stat }}
+            </li>
+          </ul>
+        </div>
+
+        <div *ngIf="pokemon.moves && pokemon.moves.length">
+          <p><strong>Movements:</strong></p>
+          <ul>
+            <li *ngFor="let move of pokemon.moves">
+              {{ move.move.name | titlecase }}
+            </li>
+          </ul>
+        </div>
+        <p><strong>Height:</strong> {{ pokemon.height }} dm</p>
+        <p><strong>Weight::</strong> {{ pokemon.weight }} hg</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
