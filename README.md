@@ -37,3 +37,5 @@ Se nos presentará una pantalla que tiene una barra de búsqueda que se actualiz
 ![4478f2b7-b3c7-4683-b44b-a8c98c597584](https://github.com/user-attachments/assets/cbc06e45-ab43-4b8e-a3d1-dc743fa1f75a)
 
 ![a175fa1e-c771-4019-b301-4634333e6893](https://github.com/user-attachments/assets/3cda4273-9684-4419-891c-10312acf0d1f)
+
+[**APK Aplicación Pokemon**](https://github.com/franciscocaero/API-pokemon-Ionic/blob/099c9abe4e9ff911f6945d4e197efda77b19d166/app-debug.apk)
